@@ -1,0 +1,9 @@
+/.agents/
+/.codex/
+/.vscode/
+/**/.env
+/**/node_modules/
+package-lock.json
+/**/output*.md
+/**/output*.zip
+/**/tmp/

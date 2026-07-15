@@ -1,0 +1,7 @@
+{
+  "schema": "adsm-context",
+  "version": "0.1.0",
+  "notes": [
+    "Initial context created from the canonical adsm-ctx template set."
+  ]
+}

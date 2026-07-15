@@ -1,0 +1,45 @@
+{
+  "name": "@flancer32/alarisa-back",
+  "version": "0.1.0",
+  "description": "Reusable server-side package for the Alarisa back area.",
+  "type": "module",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/flancer32/alarisa-back.git"
+  },
+  "homepage": "https://github.com/flancer32/alarisa-back",
+  "bugs": {
+    "url": "https://github.com/flancer32/alarisa-back/issues"
+  },
+  "keywords": [
+    "alarisa",
+    "backend",
+    "server",
+    "teqfw"
+  ],
+  "types": "types.d.ts",
+  "files": [
+    "src/",
+    "types.d.ts"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "teqfw": {
+    "namespaces": [
+      {
+        "prefix": "Alarisa_Back_",
+        "path": "./src",
+        "ext": ".mjs"
+      }
+    ]
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "typescript": "^7.0.2"
+  }
+}
