@@ -9,7 +9,7 @@ import Human from "../../../src/Ingress/Human.mjs";
 test("durably accepts a contribution and makes retry idempotent", async () => {
   const dataRoot = await fs.mkdtemp(path.join(os.tmpdir(), "alarisa-back-"));
   const ingress = new Human({fs, path, config: {dataRoot}});
-  const input = {contributionId: "test-contribution-0001", text: "Привет", channel: "mob"};
+  const input = {contributionId: "test-contribution-0001", text: "Hello", channel: "mob"};
 
   const first = await ingress.accept(input);
   const retry = await ingress.accept(input);
@@ -25,10 +25,10 @@ test("rejects reuse of an identifier for different content", async () => {
   const dataRoot = await fs.mkdtemp(path.join(os.tmpdir(), "alarisa-back-"));
   const ingress = new Human({fs, path, config: {dataRoot}});
   const contributionId = "test-contribution-0002";
-  await ingress.accept({contributionId, text: "Первое", channel: "mob"});
+  await ingress.accept({contributionId, text: "First", channel: "mob"});
 
   await assert.rejects(
-    ingress.accept({contributionId, text: "Другое", channel: "mob"}),
+    ingress.accept({contributionId, text: "Different", channel: "mob"}),
     (error) => error.code === "CONTRIBUTION_CONFLICT",
   );
 });
