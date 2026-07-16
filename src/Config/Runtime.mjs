@@ -13,6 +13,22 @@ export class Data {
   serverType;
   /** @type {string|undefined} */
   dataRoot;
+  /** @type {string|undefined} */
+  authOrigin;
+  /** @type {string|undefined} */
+  authRpId;
+  /** @type {string|undefined} */
+  authRpName;
+  /** @type {number|undefined} */
+  authChallengeTtlMs;
+  /** @type {number|undefined} */
+  authEnrollmentTtlMs;
+  /** @type {number|undefined} */
+  authMobSessionTtlMs;
+  /** @type {number|undefined} */
+  authDeskSessionTtlMs;
+  /** @type {number|undefined} */
+  authStepUpTtlMs;
   /** @type {Fl32_Web_Back_Config_Runtime} */
   web;
 }
@@ -56,6 +72,14 @@ export class Factory {
     cfg.httpPort = undefined;
     cfg.serverType = undefined;
     cfg.dataRoot = undefined;
+    cfg.authOrigin = undefined;
+    cfg.authRpId = undefined;
+    cfg.authRpName = undefined;
+    cfg.authChallengeTtlMs = undefined;
+    cfg.authEnrollmentTtlMs = undefined;
+    cfg.authMobSessionTtlMs = undefined;
+    cfg.authDeskSessionTtlMs = undefined;
+    cfg.authStepUpTtlMs = undefined;
     frozen = false;
 
     this.configure = function (params = {}) {
@@ -64,6 +88,14 @@ export class Factory {
       if (params.httpPort !== undefined && cfg.httpPort === undefined) cfg.httpPort = params.httpPort;
       if (params.serverType !== undefined && cfg.serverType === undefined) cfg.serverType = params.serverType;
       if (params.dataRoot !== undefined && cfg.dataRoot === undefined) cfg.dataRoot = params.dataRoot;
+      if (params.authOrigin !== undefined && cfg.authOrigin === undefined) cfg.authOrigin = params.authOrigin;
+      if (params.authRpId !== undefined && cfg.authRpId === undefined) cfg.authRpId = params.authRpId;
+      if (params.authRpName !== undefined && cfg.authRpName === undefined) cfg.authRpName = params.authRpName;
+      if (params.authChallengeTtlMs !== undefined && cfg.authChallengeTtlMs === undefined) cfg.authChallengeTtlMs = params.authChallengeTtlMs;
+      if (params.authEnrollmentTtlMs !== undefined && cfg.authEnrollmentTtlMs === undefined) cfg.authEnrollmentTtlMs = params.authEnrollmentTtlMs;
+      if (params.authMobSessionTtlMs !== undefined && cfg.authMobSessionTtlMs === undefined) cfg.authMobSessionTtlMs = params.authMobSessionTtlMs;
+      if (params.authDeskSessionTtlMs !== undefined && cfg.authDeskSessionTtlMs === undefined) cfg.authDeskSessionTtlMs = params.authDeskSessionTtlMs;
+      if (params.authStepUpTtlMs !== undefined && cfg.authStepUpTtlMs === undefined) cfg.authStepUpTtlMs = params.authStepUpTtlMs;
       webRuntimeFactory.configure({
         host: params.host,
         port: params.httpPort,
@@ -77,6 +109,14 @@ export class Factory {
       if (cfg.httpPort === undefined) cfg.httpPort = 3000;
       if (cfg.serverType === undefined) cfg.serverType = "http";
       if (cfg.dataRoot === undefined) cfg.dataRoot = "var";
+      if (cfg.authOrigin === undefined) cfg.authOrigin = "http://localhost:3000";
+      if (cfg.authRpId === undefined) cfg.authRpId = "localhost";
+      if (cfg.authRpName === undefined) cfg.authRpName = "Alarisa";
+      if (cfg.authChallengeTtlMs === undefined) cfg.authChallengeTtlMs = 300_000;
+      if (cfg.authEnrollmentTtlMs === undefined) cfg.authEnrollmentTtlMs = 900_000;
+      if (cfg.authMobSessionTtlMs === undefined) cfg.authMobSessionTtlMs = 7_776_000_000;
+      if (cfg.authDeskSessionTtlMs === undefined) cfg.authDeskSessionTtlMs = 15_552_000_000;
+      if (cfg.authStepUpTtlMs === undefined) cfg.authStepUpTtlMs = 1_800_000;
       cfg.web = webRuntimeFactory.freeze();
       Object.freeze(cfg);
       factoryFrozen = true;

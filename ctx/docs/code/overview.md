@@ -5,7 +5,9 @@
 
 ## Code Structure
 
-`src/Config/Runtime.mjs` owns the immutable server runtime configuration used by back-area components. `src/Ingress/Human.mjs` durably accepts idempotent Principal contributions as private per-identifier JSON records under `<dataRoot>/principal-contributions/`.
+`src/Config/Runtime.mjs` owns immutable server and authentication configuration. `src/Ingress/Human.mjs` durably accepts idempotent Principal contributions as private per-identifier JSON records under `<dataRoot>/principal-contributions/`.
+
+`src/Auth/WebAuthn.mjs` lazily adapts `@simplewebauthn/server`. `src/Auth/Service.mjs` owns one-Principal enrollment, option generation, verification, sliding sessions, inspection, and revocation. `src/Auth/Store.mjs` persists private mode-`0600` JSON records under `<dataRoot>/authentication/{enrollments,challenges,credentials,sessions}/`; raw capability and session tokens are SHA-256 addressed and never stored.
 
 ## Engineering Constraints
 
@@ -15,3 +17,5 @@
 - use exclusive file creation to make contribution retry idempotent across processes and restarts;
 - reject reuse of one contribution identifier for different content;
 - do not duplicate `comm` contracts or create an alternative server composition root.
+- keep the fixed Principal identifier invariant and preserve credential-bound targeted revocation;
+- keep WebAuthn verification inputs bound to configured origin, RP ID, challenge, credential public key/counter, and required user verification.

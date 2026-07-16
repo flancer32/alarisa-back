@@ -10,13 +10,18 @@ Record non-negotiable architecture restrictions and trust boundaries.
 
 ## Core Constraints
 
-List stable architectural properties that downstream environment and code work must respect.
-
-Examples may include offline-first behavior, transport choices, persistence assumptions, cost ceilings, latency boundaries, or trust boundaries.
+- exactly one Principal identity (`principal`) exists per application instance;
+- credentials are independent and revocable, while synchronized passkeys remain allowed and device labels are not hardware proof;
+- enrollment is administrator-issued, expiring, single-use, and stores no raw token;
+- challenges are expiring and single-use;
+- opaque sessions are bound to the credential that created them and revocation affects only that credential's sessions;
+- WebAuthn private keys and biometric data never enter this package.
 
 ## Boundary Constraints
 
-Describe what architecture must not redefine or violate.
+- do not add account lookup, usernames, passwords, roles, tenants, or external identity providers;
+- do not move HTTP/browser contracts into `back` or trusted persistence into `comm`;
+- do not interpret successful transport validation as authentication.
 
 This section should make product and architecture boundaries explicit.
 
