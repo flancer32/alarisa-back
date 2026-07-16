@@ -1,7 +1,7 @@
 # Architecture Overview
 
 - Path: `ctx/docs/architecture/overview.md`
-- Changed: `20260715`
+- Changed: `20260716`
 
 ## Purpose
 
@@ -16,7 +16,8 @@ The package supplies coherent TeqFW modules that the `@flancer32/alarisa` server
 - the server composition root remains outside this package;
 - shared communication contracts remain in `@flancer32/alarisa-comm`;
 - dependencies must be directed and must not create package-area cycles;
-- no persistence, scheduler, execution, or integration implementation is selected by this scaffold.
+- durable Principal-contribution acceptance is implemented as private file-backed state under the configured data root;
+- broader persistence, scheduler, execution, and integration implementations remain undeclared.
 
 ## Product Dependency
 

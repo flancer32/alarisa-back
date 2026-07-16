@@ -1,6 +1,6 @@
 {
   "name": "@flancer32/alarisa-back",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Reusable server-side package for the Alarisa back area.",
   "type": "module",
   "license": "Apache-2.0",
@@ -37,6 +37,9 @@
   },
   "scripts": {
     "test": "node --test"
+  },
+  "dependencies": {
+    "@flancer32/teq-web": "0.15.0"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",
