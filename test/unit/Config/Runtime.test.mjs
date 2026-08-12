@@ -26,6 +26,8 @@ test("runtime configuration is read-only and frozen with defaults", () => {
   assert.equal(frozen.web.frozen, true);
   assert.equal(webCalls[0].host, "127.0.0.1");
   assert.throws(() => { frozen.host = "0.0.0.0"; }, /immutable/);
+  assert.doesNotThrow(() => Object.freeze(frozen));
+  assert.equal(frozen.host, "127.0.0.1");
   assert.throws(() => factory.configure({host: "example.com"}), /already frozen/);
   assert.equal(factory.freeze(), frozen);
 });

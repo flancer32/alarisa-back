@@ -29,7 +29,7 @@ export class Data {
   authDeskSessionTtlMs;
   /** @type {number|undefined} */
   authStepUpTtlMs;
-  /** @type {Fl32_Web_Back_Config_Runtime} */
+  /** @type {TeqFw_Web_Back_Config_Runtime} */
   web;
 }
 
@@ -52,9 +52,6 @@ const proxy = new Proxy(facade, {
   deleteProperty() {
     throw new Error("Runtime configuration is immutable.");
   },
-  preventExtensions() {
-    throw new Error("Runtime configuration cannot be structurally mutated.");
-  },
 });
 
 /**
@@ -64,7 +61,7 @@ const proxy = new Proxy(facade, {
 export class Factory {
   /**
    * @param {object} deps
-   * @param {Fl32_Web_Back_Config_Runtime__Factory} deps.webRuntimeFactory
+   * @param {TeqFw_Web_Back_Config_Runtime__Factory} deps.webRuntimeFactory
    */
   constructor({webRuntimeFactory}) {
     let factoryFrozen = false;
@@ -134,6 +131,6 @@ export default class Wrapper {
 
 export const __deps__ = Object.freeze({
   Factory: Object.freeze({
-    webRuntimeFactory: "Fl32_Web_Back_Config_Runtime__Factory$",
+    webRuntimeFactory: "TeqFw_Web_Back_Config_Runtime__Factory$",
   }),
 });

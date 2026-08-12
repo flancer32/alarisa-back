@@ -27,20 +27,24 @@
     "node": ">=20"
   },
   "teqfw": {
-    "namespaces": [
-      {
-        "prefix": "Alarisa_Back_",
-        "path": "./src",
-        "ext": ".mjs"
+    "fw": {
+      "di": {
+        "namespaces": [
+          {
+            "prefix": "Alarisa_Back_",
+            "path": "./src",
+            "ext": ".mjs"
+          }
+        ]
       }
-    ]
+    }
   },
   "scripts": {
     "test": "node --test"
   },
   "dependencies": {
     "@simplewebauthn/server": "13.3.2",
-    "@flancer32/teq-web": "0.15.0"
+    "@teqfw/web": "^2.0.0"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",
